@@ -1,2 +1,18 @@
+@echo off
+setlocal
 cd /D D:\Python\LevelUp_bot
-D:\Python\Python\VDT\venv\Scripts\python.exe main.py \d 1>LogCMD.txt 2>&1
+
+rem
+set "HTTP_PROXY="
+set "http_proxy="
+set "https_proxy="
+set "HTTPS_PROXY="
+set "ALL_PROXY="
+set "all_proxy="
+set "NO_PROXY=127.0.0.1,localhost,::1="
+set "no_proxy=127.0.0.1,localhost,::1="
+
+
+D:\Python\LevelUp_bot\venv\Scripts\python.exe main.py 1>LogCMD.txt 2>&1
+
+endlocal
