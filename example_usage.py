@@ -7,7 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-from test_automation import TestAutomation
+from main import TestAutomation
 from utils import setup_logging, save_results
 import time
 

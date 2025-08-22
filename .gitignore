@@ -38,11 +38,13 @@ venv.bak/
 # Logs
 *.log
 logs/
+LogCMD.txt
 
 # Test results
 test_results.txt
 results/
 unknown_questions.txt
+open_chrome.py
 
 # Chrome driver
 chromedriver

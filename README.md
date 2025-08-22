@@ -7,11 +7,11 @@
 ```
 Level_Up/
 ├── requirements.txt          # Зависимости проекта
-├── questions.py              # Файл с вопросами и ответами
+├── main.py                   # Запуск скрипта
 ├── test_automation.py        # Основной класс автоматизации
 ├── config.py                 # Конфигурация проекта
 ├── utils.py                  # Утилиты и вспомогательные функции
-├── example_usage.py          # Пример использования
+├── questions.py              # Файл с вопросами и ответами
 ├── custom_questions.txt      # Пример файла с кастомными вопросами
 ├── unknown_questions.txt     # Файл с неизвестными вопросами (создается автоматически)
 └── README.md                 # Документация
@@ -20,6 +20,9 @@ Level_Up/
 ## Установка
 
 1. Установите зависимости:
+```bash
+.\venv\Scripts\activate
+```
 ```bash
 pip install -r requirements.txt
 ```
@@ -52,21 +55,8 @@ SELECTORS = {
 ```
 
 ### 3. Запуск автоматизации
-
-```python
-from selenium import webdriver
-from test_automation import TestAutomation
-
-# Инициализация драйвера
-driver = webdriver.Chrome()
-driver.get("URL_САЙТА_С_ТЕСТАМИ")
-
-# Создание и запуск автоматизации
-automation = TestAutomation(driver)
-automation.run_automation()
-
-driver.quit()
-```
+1. Для автоматическоого запуска разместить проект по адресу D:\Python\LevelUp_bot (либо редактировать run.bat)
+2. Добавить run.bat в планировщик задач
 
 ### 4. Обработка неизвестных вопросов
 
