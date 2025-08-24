@@ -1,6 +1,7 @@
 import time
-
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
 from test_automation import TestAutomation
 from config import LEVEL_UP_URL
 
@@ -15,7 +16,7 @@ def main():
     """
 
     # настройки браузера (опционально)
-    options = None
+    options = Options()
 
     # инициализация браузера и запуск основного функционала
     with webdriver.Chrome(options=options) as driver:

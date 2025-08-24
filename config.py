@@ -12,11 +12,12 @@ BROWSER_CONFIG = {
 
 # CSS селекторы для элементов на странице
 SELECTORS = {
-    "start_game": "//div[@class='inlay']/b[text()='Начать игру']",  # Начать игру
-    "question": "div.question_text > p",                            # Вопрос
-    "answer_options": "//span[@class='white_color']",               # Варианты ответов
-    "answer_container": "section.orange_color.orange_bg",           # Контейнер для клика по ответу
-    "submit_button": "//div[@class='inlay']/b[text()='Ответить']"   # Ответить
+    "start_game": "//div[@class='inlay']/b[text()='Начать игру']",      # Начать игру
+    "question": "div.question_text > p",                                # Вопрос
+    "answer_options": "//span[@class='white_color']",                   # Варианты ответов
+    "answer_container": "section.orange_color.orange_bg",               # Контейнер для клика по ответу
+    "submit_button": "//div[@class='inlay']/b[text()='Ответить']",      # Ответить
+    "complete_button": "//div[@class='inlay']/b[text()='Завершить']",   # Завершить тест
 }
 
 # Настройки логирования

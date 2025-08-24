@@ -39,6 +39,7 @@ venv.bak/
 *.log
 logs/
 LogCMD.txt
+LogEnv.txt
 
 # Test results
 test_results.txt

@@ -32,7 +32,7 @@ class TestAutomation:
             start_game.click()
             print('🚀 Ракетка запущена...')
         except TimeoutException:
-            print('🛑 Игра еще не доступна, побереги бота!')
+            print('🛑 Игра еще не доступна, побереги робота!')
 
     def get_current_question(self):
         """Получает текущий вопрос со страницы"""
@@ -82,19 +82,17 @@ class TestAutomation:
     def answer_question(self, question_text):
         """Отвечает на конкретный вопрос"""
         if question_text not in self.questions_answers:
-            print(f"ಠ_ಠ Вопрос '{question_text}' не найден в базе ответов")
+            print(f"ಠ_ಠ Вопрос '{question_text}' | не найден в базе ответов")
             # Сохраняем неизвестный вопрос
             self.save_unknown_question(question_text)
 
             # выберем рандомный ответ для перехода к след вопросу:
-            parent_section = self.driver.find_element(By.CSS_SELECTOR, 'SELECTORS["answer_container"]')
-            print('Вариантов ответов: ', len(parent_section))
-            parent_section[random.uniform(0, len(parent_section))].click()
-            # Ищем кнопку отправки
-            submit_button = self.driver.find_element(By.CSS_SELECTOR, SELECTORS["submit_button"])
-            submit_button.click()
+            parent_section = self.driver.find_element(By.XPATH, '//section[@class="orange_color orange_bg"]/div')
+            # print('Вариантов ответов: ', len(parent_section))
+            parent_section.click()
+            time.sleep(1)
 
-            return False
+            return True
 
         correct_answers = self.questions_answers[question_text]
         print(f"Вопрос: {question_text}")
@@ -149,6 +147,13 @@ class TestAutomation:
             print("✅ Ответ отправлен")
             time.sleep(2)  # Ждем загрузки следующей страницы
             return True
+
+        except NoSuchElementException:
+            complete_button = self.driver.find_element(By.XPATH, SELECTORS["complete_button"])
+            complete_button.click()
+            print("🚀 Прохождение теста завершено ")
+            return False
+
         except Exception as e:
             print(f"Ошибка при отправке ответов: {e}")
             return False
@@ -156,8 +161,8 @@ class TestAutomation:
     def run_automation(self):
         """Основной метод для запуска автоматизации"""
 
-        # self.start_every_day_quest()
-        time.sleep(10)
+        self.start_every_day_quest()
+        time.sleep(8)
         # try:
         while True:
             # Обрабатываем текущую страницу
@@ -168,22 +173,21 @@ class TestAutomation:
             # Небольшая пауза
             time.sleep(1)
 
-            # Пытаемся отправить ответы
+            # Пытаемся отправить ответы, если кнопки ответить нет, есть 'завершить тест'
             if not self.submit_answers():
-                print("Не удалось отправить ответы или тест завершен")
+                complete_button = self.driver.find_element(By.XPATH, SELECTORS["complete_button"])
+                complete_button.click()
                 break
 
             # Проверяем, есть ли еще вопросы
             try:
                 next_question = self.get_current_question()
                 if not next_question:
-                    print("Тест завершен")
+                    print("🏁 Прохождение теста завершено")
                     break
             except:
-                print("Тест завершен")
+                print("🏁 Прохождение теста завершено")
                 break
-
-        print("Автоматизация завершена")
 
         # except Exception as e:
         #     print(f"Ошибка во время автоматизации: {e}")
