@@ -149,6 +149,7 @@ class TestAutomation:
             return True
 
         except NoSuchElementException:
+            time.sleep(2)
             complete_button = self.driver.find_element(By.XPATH, SELECTORS["complete_button"])
             complete_button.click()
             print("🚀 Прохождение теста завершено ")
@@ -183,6 +184,7 @@ class TestAutomation:
             try:
                 next_question = self.get_current_question()
                 if not next_question:
+
                     print("🏁 Прохождение теста завершено")
                     break
             except:
