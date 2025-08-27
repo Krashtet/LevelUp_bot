@@ -162,7 +162,7 @@ class TestAutomation:
     def run_automation(self):
         """Основной метод для запуска автоматизации"""
 
-        self.start_every_day_quest()
+        # self.start_every_day_quest()
         time.sleep(8)
         # try:
         while True:
